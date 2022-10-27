@@ -8,6 +8,7 @@
 
 
 class Synth {
+
 public:
     Synth(float freq, float sampleRate);
     virtual float getSample() = 0;
