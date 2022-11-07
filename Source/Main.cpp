@@ -25,7 +25,7 @@ public:
     {
         // This method is where you should put your application's initialisation code..
 
-        //mainWindow.reset (new MainWindow (getApplicationName()));
+        mainWindow.reset (new MainWindow (getApplicationName()));
     }
 
     void shutdown() override
