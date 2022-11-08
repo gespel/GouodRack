@@ -34,20 +34,18 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
     auto* outBufferR = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
     
     for (int sample = 0; sample < bufferToFill.numSamples; sample++) {
-        auto s = x->getSample()*0.5;
-        auto s2 = x2->getSample()*0.5;
+        auto s = x->getSample()*0.3;
+
         
-        x->setFrequency((y->getSample())*3+(y->getSample()+1)*110);
-        x2->setFrequency((y->getSample())*440);
-        
-        y->setFrequency((z->getSample()+1)*0.2);
-        z->setFrequency((a->getSample()+1));
+        x->setFrequency(y->getSample()*220);
+        //x2->setFrequency((y->getSample())*220);
         
         
         
         
-        outBufferL[sample] = s+(0.2*s2);
-        outBufferR[sample] = s2+(0.2*s);
+        
+        outBufferL[sample] = s;
+        outBufferR[sample] = s;
     }
 }
 
