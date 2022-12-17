@@ -8,7 +8,6 @@
 
 
 class Synth {
-
 public:
     Synth(double freq, double sampleRate);
     virtual double getSample() = 0;
@@ -33,6 +32,15 @@ public:
     SquareSynth(double freq, double sampleRate);
     double getSample();
     void setFrequency(double freq);
+};
+
+class SawtoothSynth : public Synth {
+public:
+    SawtoothSynth(double freq, double sampleRate);
+    double getSample();
+    void setFrequency(double freq);
+private:
+    double sample = 0;
 };
 
 #endif //GOUODRACK_SYNTHS_H

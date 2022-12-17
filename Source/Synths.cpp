@@ -39,3 +39,18 @@ double SquareSynth::getSample() {
 void SquareSynth::setFrequency(double freq) {
     this->freq = freq;
 }
+
+SawtoothSynth::SawtoothSynth(double freq, double sampleRate) : Synth(freq, sampleRate) {
+    this->freq = freq;
+    this->sampleRate = sampleRate;
+}
+double SawtoothSynth::getSample() {
+    sample += this->freq/this->sampleRate;
+    if(sample > 1) {
+        sample = -1;
+    }
+    return sample;
+}
+void SawtoothSynth::setFrequency(double freq) {
+    this->freq = freq;
+}
