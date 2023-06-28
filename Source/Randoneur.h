@@ -12,12 +12,16 @@
 #include "Synths.h"
 #include "stdlib.h"
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 class Randoneur {
 public:
     Randoneur(int synthcount);
-    std::vector<Synth*> random_rack;
+    std::vector<Synth*> randomRack;
+    std::vector<double> volumeTable;
+    double getSample();
     
 private:
-    
+    int synthcount = 0;
 };
