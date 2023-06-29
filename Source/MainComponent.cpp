@@ -42,7 +42,9 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
     }
     
     for (int sample = 0; sample < bufferToFill.numSamples; sample++) {
-        //auto s = x->getSample()*0.3;
+        auto s = x->getSample();
+        //wtL->setFrequency(s*110);
+        //wtR->setFrequency(s*110);
         //auto s2 = x2->getSample()*0.3;
         //x->setFrequency(220.0);
         //x->setFrequency(std::abs(y->getSample()*220));
