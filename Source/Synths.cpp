@@ -61,11 +61,9 @@ WavetableSynth::WavetableSynth(double freq, double sampleRate, int wtSize) : Syn
     this->tableSize = wtSize;
 }
 double WavetableSynth::getSample() {
-    counter++;
-    if(counter > this->tableSize-1) {
-        counter = 0;
-    }
-    return wavetable[counter];
+    phaseIncrement = freq / sampleRate * tableSize;
+    phase += phaseIncrement;
+    return wavetable[static_cast<int>(phase) % tableSize];
 }
 void WavetableSynth::setWavetable(std::vector<double> wavetable) {
     this->wavetable = wavetable;
@@ -81,5 +79,5 @@ void WavetableSynth::generateRandomWavetable() {
     }
 }
 void WavetableSynth::setFrequency(double freq) {
-    
+    this->freq = freq;
 }

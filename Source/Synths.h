@@ -59,6 +59,8 @@ private:
     std::vector<double> wavetable;
     int counter = 0;
     int tableSize = 0;
+    double phase = 0.0;
+    double phaseIncrement = freq / sampleRate * tableSize;
 };
 
 #endif //GOUODRACK_SYNTHS_H
