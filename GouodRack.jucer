@@ -4,6 +4,8 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="voeEl3" name="GouodRack">
     <GROUP id="{F5AF56DF-79C0-D535-2F9B-A5E013A7E9D7}" name="Source">
+      <FILE id="fRrRaE" name="Randoneur.cpp" compile="1" resource="0" file="Source/Randoneur.cpp"/>
+      <FILE id="XC5pzq" name="Randoneur.h" compile="0" resource="0" file="Source/Randoneur.h"/>
       <FILE id="FbnNA1" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="cFcXzI" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="fN54sz" name="MainComponent.cpp" compile="1" resource="0"
