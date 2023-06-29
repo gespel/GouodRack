@@ -5,6 +5,10 @@
 #ifndef GOUODRACK_SYNTHS_H
 #define GOUODRACK_SYNTHS_H
 #include <math.h>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <random>
 
 
 class Synth {
@@ -41,6 +45,20 @@ public:
     void setFrequency(double freq);
 private:
     double sample = 0;
+};
+
+class WavetableSynth : public Synth {
+public:
+    WavetableSynth(double freq, double sampleRate, int wtSize);
+    double getSample();
+    void setFrequency(double freq);
+    void setWavetable(std::vector<double> wavetable);
+    void generateRandomWavetable();
+private:
+    double sample = 0;
+    std::vector<double> wavetable;
+    int counter = 0;
+    int tableSize = 0;
 };
 
 #endif //GOUODRACK_SYNTHS_H

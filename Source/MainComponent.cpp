@@ -25,13 +25,21 @@ MainComponent::~MainComponent()
 //==============================================================================
 void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
 {
-
+    wtL->generateRandomWavetable();
+    wtR->generateRandomWavetable();
 }
 
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
 {
     auto* outBufferL = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
-    //auto* outBufferR = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
+    auto* outBufferR = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
+    
+    this->wyld++;
+    if(this->wyld > 10) {
+        this->wyld = 0;
+        wtL->generateRandomWavetable();
+        wtR->generateRandomWavetable();
+    }
     
     for (int sample = 0; sample < bufferToFill.numSamples; sample++) {
         //auto s = x->getSample()*0.3;
@@ -42,9 +50,8 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         //x2->setFrequency((y->getSample())*220);
         
         
-        
-        auto s = r->getSample();
-        outBufferL[sample] = s;
+        outBufferL[sample] = wtL->getSample();
+        outBufferR[sample] = wtR->getSample();
         //outBufferR[sample] = s;
         //outBufferL[sample] = (s + s2)/2;
         //outBufferR[sample] = (s + s2)/2;

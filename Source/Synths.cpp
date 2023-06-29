@@ -54,3 +54,32 @@ double SawtoothSynth::getSample() {
 void SawtoothSynth::setFrequency(double freq) {
     this->freq = freq;
 }
+
+WavetableSynth::WavetableSynth(double freq, double sampleRate, int wtSize) : Synth(freq, sampleRate) {
+    this->freq = freq;
+    this->sampleRate = sampleRate;
+    this->tableSize = wtSize;
+}
+double WavetableSynth::getSample() {
+    counter++;
+    if(counter > this->tableSize-1) {
+        counter = 0;
+    }
+    return wavetable[counter];
+}
+void WavetableSynth::setWavetable(std::vector<double> wavetable) {
+    this->wavetable = wavetable;
+}
+void WavetableSynth::generateRandomWavetable() {
+    this->wavetable.clear();
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(-1.0, 1.0);
+
+    for(int i = 0; i < this->tableSize; i++) {
+        this->wavetable.push_back(dis(gen));
+    }
+}
+void WavetableSynth::setFrequency(double freq) {
+    
+}
