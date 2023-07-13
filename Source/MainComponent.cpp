@@ -27,6 +27,11 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
 {
     wtL->generateRandomWavetable();
     wtR->generateRandomWavetable();
+    st2->setMax(2);
+    st->setMin(2);
+    st->setMax(8);
+    st2->setMin(2);
+    st2->setMax(8);
 }
 
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
@@ -34,15 +39,17 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
     auto* outBufferL = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
     auto* outBufferR = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
     
-    this->wyld++;
+    /*this->wyld++;
     if(this->wyld > 10) {
         this->wyld = 0;
         wtL->generateRandomWavetable();
         wtR->generateRandomWavetable();
-    }
+    }*/
     
     for (int sample = 0; sample < bufferToFill.numSamples; sample++) {
-        auto s = x->getSample();
+        auto s = st->getSample();
+        auto s2 = st2->getSample();
+        st->setFrequency(s2 * 0.8);
         //wtL->setFrequency(s*110);
         //wtR->setFrequency(s*110);
         //auto s2 = x2->getSample()*0.3;
@@ -50,10 +57,12 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         //x->setFrequency(std::abs(y->getSample()*220));
         //x2->setFrequency(std::abs(z->getSample()*220));
         //x2->setFrequency((y->getSample())*220);
+        xL->setFrequency(s*110);
+        xR->setFrequency(s*55);
+        //wtR->setFrequency(s*55);
         
-        
-        outBufferL[sample] = wtL->getSample();
-        outBufferR[sample] = wtR->getSample();
+        outBufferL[sample] = xL->getSample();
+        outBufferR[sample] = xR->getSample();
         //outBufferR[sample] = s;
         //outBufferL[sample] = (s + s2)/2;
         //outBufferR[sample] = (s + s2)/2;
