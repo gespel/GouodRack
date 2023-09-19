@@ -4,6 +4,7 @@
 #include "Synths.h"
 #include "Randoneur.h"
 #include "EnvelopeGenerator.h"
+#include "StepSequencer.h"
 
 //==============================================================================
 /*
@@ -42,6 +43,8 @@ private:
     EnvelopeGenerator *st = new SawtoothEnvelopeIncreasing(48000, 1);
     EnvelopeGenerator *st2 = new SawtoothEnvelopeIncreasing(48000, 1);
     EnvelopeGenerator *st3 = new SawtoothEnvelopeIncreasing(48000, 1);
+    Synth* ss = new SineSynth(220, 48000);
+    StepSequencer* step = new StepSequencer(48000, {1, 2, 3, 4});
     //Synth *b = new SquareSynth(3, 48000);
     int wyld = 0;
     int envelope = 0;
