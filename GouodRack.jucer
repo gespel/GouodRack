@@ -4,6 +4,12 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="voeEl3" name="GouodRack">
     <GROUP id="{F5AF56DF-79C0-D535-2F9B-A5E013A7E9D7}" name="Source">
+      <GROUP id="{86D5B59E-F1FC-444C-53C0-71BB35D2C256}" name="scripting">
+        <FILE id="J0zdgu" name="ScriptLanguage.cpp" compile="1" resource="0"
+              file="Source/ScriptLanguage.cpp"/>
+        <FILE id="xCSkVk" name="ScriptLanguage.h" compile="0" resource="0"
+              file="Source/ScriptLanguage.h"/>
+      </GROUP>
       <GROUP id="{99FCEE64-2EFE-037B-C329-789645E8A0AC}" name="modules">
         <FILE id="ekdO6l" name="StepSequencer.cpp" compile="1" resource="0"
               file="Source/StepSequencer.cpp"/>

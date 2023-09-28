@@ -37,3 +37,11 @@ private:
     
     
 };
+
+class SawtoothEnvelopeDecreasing : public EnvelopeGenerator {
+public:
+    SawtoothEnvelopeDecreasing(double sampleRate, double freq);
+
+private:
+    void tick() override;
+};

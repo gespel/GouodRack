@@ -46,3 +46,16 @@ void SawtoothEnvelopeIncreasing::tick() {
         this->sample = this->min;
     }
 }
+
+SawtoothEnvelopeDecreasing::SawtoothEnvelopeDecreasing(double sampleRate, double freq) : EnvelopeGenerator(sampleRate, freq) {
+    this->sampleRate = sampleRate;
+    this->freq = freq;
+
+}
+
+void SawtoothEnvelopeDecreasing::tick() {
+    this->sample -= this->max / this->sampleRate * this->freq;
+    if (this->sample < this->min) {
+        this->sample = this->max;
+    }
+}

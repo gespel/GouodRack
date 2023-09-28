@@ -5,6 +5,7 @@
 #include "Randoneur.h"
 #include "EnvelopeGenerator.h"
 #include "StepSequencer.h"
+#include "ScriptLanguage.h"
 
 //==============================================================================
 /*
@@ -40,11 +41,12 @@ private:
     Randoneur *r = new Randoneur(64);
     WavetableSynth *wtL = new WavetableSynth(35, 48000, 32);
     WavetableSynth *wtR = new WavetableSynth(35, 48000, 32);
-    EnvelopeGenerator *st = new SawtoothEnvelopeIncreasing(48000, 1);
+    EnvelopeGenerator *st = new SawtoothEnvelopeDecreasing(48000, 4);
     EnvelopeGenerator *st2 = new SawtoothEnvelopeIncreasing(48000, 1);
     EnvelopeGenerator *st3 = new SawtoothEnvelopeIncreasing(48000, 1);
-    Synth* ss = new SineSynth(220, 48000);
-    StepSequencer* step = new StepSequencer(48000, {1, 2, 3, 4});
+    Synth* ss = new SawtoothSynth(55, 48000);
+    StepSequencer* step = new StepSequencer(48000, {3, 1, 2, 4, 2, 3, 1, 6});
+    ScriptInterpreter* si = new ScriptInterpreter();
     //Synth *b = new SquareSynth(3, 48000);
     int wyld = 0;
     int envelope = 0;

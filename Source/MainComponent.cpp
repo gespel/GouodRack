@@ -32,7 +32,7 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     st->setMax(8);
     st2->setMin(2);
     st2->setMax(8);
-    step->setSpeed(2);
+    step->setSpeed(1);
 }
 
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
@@ -69,9 +69,9 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         //outBufferR[sample] = s;
         //outBufferL[sample] = (s + s2)/2;
         //outBufferR[sample] = (s + s2)/2;
-        ss->setFrequency(440 * step->getRandomSample());
-        outBufferL[sample] = rs;
-        outBufferR[sample] = rs;
+        ss->setFrequency(55 * s);
+        outBufferL[sample] = rs*0.1*s;
+        outBufferR[sample] = rs*0.1*s;
     }
 }
 
